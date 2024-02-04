@@ -366,7 +366,7 @@ if flow:
 
     value_cluster.remove(district)
 
-    filtered_df = data[data['District Name'].isin(value_cluster)]
+    filtered_df = district_data[district_data['District Name'].isin(value_cluster)]
 
     filtered_df = filtered_df[["District Name", "Crime Score"]]
 
