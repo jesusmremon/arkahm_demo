@@ -364,7 +364,7 @@ if flow:
 
     col1.plotly_chart(plotting(df_res, forecast_df_res, district, 'Historical Response Time', 'Forecasted Response Time', 'response_time_minutes', "Response Time"))
 
-    value_cluster.remove(name_to_remove)
+    value_cluster.remove(district)
 
     filtered_df = district_data[district_data['District Name'].isin(value_cluster)].groupby('District Name').mean().reset_index()
 
