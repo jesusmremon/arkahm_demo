@@ -380,7 +380,8 @@ if flow:
     fig.update_layout(xaxis_title='Districts',
                       yaxis_title= 'Avg. Crime Score',
                       legend_title='Districts',
-                      template='plotly_white')
+                      template='plotly_white',
+                     marker_color='blue')
 
     col2.plotly_chart(fig)
 
