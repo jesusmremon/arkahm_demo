@@ -377,8 +377,8 @@ if flow:
     
     fig = px.bar(filtered_df, x='District Name', y='Crime Score', title="Average Crime Score of similar districts <br><sup style='color:#d4d4d4;'>Distric: " + district + "</sup>")
 
-    fig.update_layout(xaxis_title='Avg. Crime Score',
-                      yaxis_title= 'District',
+    fig.update_layout(xaxis_title='Districts',
+                      yaxis_title= 'Avg. Crime Score',
                       legend_title='Districts',
                       template='plotly_white')
 
