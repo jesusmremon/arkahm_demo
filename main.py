@@ -375,13 +375,12 @@ if flow:
 
 # Plotting
     
-    fig = px.bar(filtered_df, x='District Name', y='Crime Score', title="Average Crime Score of similar districts <br><sup style='color:#d4d4d4;'>Distric: " + district + "</sup>")
+    fig = px.bar(filtered_df, x='District Name', y='Crime Score', title="Average Crime Score of similar districts <br><sup style='color:#d4d4d4;'>Distric: " + district + "</sup>", color='District Name')
 
     fig.update_layout(xaxis_title='Districts',
                       yaxis_title= 'Avg. Crime Score',
                       legend_title='Districts',
-                      template='plotly_white',
-                     marker_color='blue')
+                      template='plotly_white')
 
     col2.plotly_chart(fig)
 
