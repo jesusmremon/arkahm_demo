@@ -378,8 +378,8 @@ if flow:
                       template='plotly_white')
 
 
-    
-    fig.show()
+
+    col2.plotly_chart(fig)
 
     ### Grafica de previsión de crecimiento de carga policial
     # - Calcular una métrica para determinar la carga policial de 0 a 10
