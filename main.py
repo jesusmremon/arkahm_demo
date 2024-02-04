@@ -368,6 +368,8 @@ if flow:
 
     filtered_df = data[data['District Name'].isin(value_cluster)]
 
+    filtered_df = filtered_df[["District Name", "Crime Score"]]
+
 # Plotting
     
     fig = px.bar(filtered_df, x='District Name', y='Crime Score', title="Average Crime Score of similar districts <br><sup style='color:#d4d4d4;'>Distric: " + district + "</sup>")
@@ -376,8 +378,6 @@ if flow:
                       yaxis_title= 'District',
                       legend_title='Districts',
                       template='plotly_white')
-
-
 
     col2.plotly_chart(fig)
 
