@@ -364,13 +364,14 @@ if flow:
 
     col1.plotly_chart(plotting(df_res, forecast_df_res, district, 'Historical Response Time', 'Forecasted Response Time', 'response_time_minutes', "Response Time"))
 
+    
+
     value_cluster.remove(district)
 
     filtered_df = district_data[district_data['District Name'].isin(value_cluster)]
 
     filtered_df = filtered_df[["District Name", "Crime Score"]]
 
-    filtered_df = filtered_df.groupby("District Name")
 
 # Plotting
     
