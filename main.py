@@ -364,6 +364,20 @@ if flow:
 
     col1.plotly_chart(plotting(df_res, forecast_df_res, district, 'Historical Response Time', 'Forecasted Response Time', 'response_time_minutes', "Response Time"))
 
+    value_cluster.remove(name_to_remove)
+
+    filtered_df = district_data[district_data['District Name'].isin(value_cluster)].groupby('District Name').mean().reset_index()
+
+# Plotting
+    fig = px.bar(filtered_df, x='Name', y='Value', title="Average Crime Score of similar districts <br><sup style='color:#d4d4d4;'>Distric: " + district + "</sup>")
+
+    fig.update_layout(
+    xaxis_title='Avg. Crime Score',
+    yaxis_title='District'
+    )
+    
+    fig.show()
+
     ### Grafica de previsión de crecimiento de carga policial
     # - Calcular una métrica para determinar la carga policial de 0 a 10
     # - Crear Gráfica con ARIMA sobre la previsión de crecimiento policial
@@ -375,8 +389,6 @@ if flow:
     ### Posibilidad de crear un PDF
 
 
-
-    st.info(value_cluster)
 
 
 
