@@ -370,6 +370,8 @@ if flow:
 
     filtered_df = filtered_df[["District Name", "Crime Score"]]
 
+    filtered_df = filtered_df.groupby("District Name")
+
 # Plotting
     
     fig = px.bar(filtered_df, x='District Name', y='Crime Score', title="Average Crime Score of similar districts <br><sup style='color:#d4d4d4;'>Distric: " + district + "</sup>")
