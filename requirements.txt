@@ -1,0 +1,9 @@
+streamlit
+pandas
+statsmodels
+scikit-learn
+plotly.express
+geopandas
+folium
+streamlit_folium
+datetime
