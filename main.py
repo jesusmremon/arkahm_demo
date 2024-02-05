@@ -450,13 +450,18 @@ if flow:
     bar_fig.add_hline(y=average_crime_score, line_dash="dot", line_color="red", annotation_text=f'Average: {average_crime_score:.2f}',
                     annotation_position="bottom right")
 
-    st.plotly_chart(bar_fig)
+    col1.plotly_chart(bar_fig)
 
     #################
+
+    data_reduced['Date'] = pd.to_datetime(data_reduced['Date'])
+    data_reduced.set_index('Date', inplace=True)
+
+    data_reduced = data_reduced[['Crime Score']].resample('W').mean()
     
     fig = go.Figure(data=go.Heatmap(
-        z=district_data["Crime Score"],
-        x=district_data["Date"],
+        z=data_reduced["Crime Score"],
+        x=data_reduced.index,
         y=data.index,
         colorscale='Viridis'))
 
