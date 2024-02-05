@@ -439,11 +439,14 @@ if flow:
     print(links)
 
     with st.expander("News Articles"):
-        st.subheader(links[0]['news'][0]["title"])
+        st.write(links[0]['news'][0]["title"])
+        st.link_button("Article", links[0]['news'][0]['link'])
         st.divider()
-        st.subheader(links[0]['news'][1]["title"])
+        st.write(links[0]['news'][1]["title"])
+        st.link_button("Article", links[0]['news'][1]['link'])
         st.divider()
-        st.subheader(links[0]['news'][2]["title"])
+        st.write(links[0]['news'][2]["title"])
+        st.link_button("Article", links[0]['news'][2]['link'])
         st.divider()
 
 
