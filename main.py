@@ -80,7 +80,7 @@ def choose_district(district, window, data):
     data_reduced['Date'] = pd.to_datetime(data_reduced['Date'])
     data_reduced.set_index('Date', inplace=True)
 
-    data_reduced = data_reduced.loc[["Crime Score"]].resample(window).mean()
+    data_reduced = data_reduced[["Crime Score"]].resample(window).mean()
 
     return data_reduced
 
