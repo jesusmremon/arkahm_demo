@@ -263,8 +263,16 @@ if flow:
     st.toast("Neural Network loading")
 
     st.write(f"Crime Score: {round(crime_scale,1)}")
-    st.page_link("https://home.chicagopolice.org/category/community-alerts/?tag=1st-district", label="Community Alerts", icon="📁")
-    st.page_link("https://home.chicagopolice.org/category/wanted/?tag=2nd-district", label="Community Fugitives", icon="📁")
+
+    addon = "th"
+
+    if number == 1:
+        addon = "st"
+    elif number == 1:
+        addon = "nd"
+    
+    st.page_link("https://home.chicagopolice.org/category/community-alerts/?tag=" + number + addon + "-district", label="Community Alerts", icon="📁")
+    st.page_link("https://home.chicagopolice.org/category/wanted/?tag="+ number + addon +"-district", label="Community Fugitives", icon="📁")
     st.divider()
 
     data = district_data[district_data['District'] == number]
