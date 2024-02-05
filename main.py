@@ -441,7 +441,7 @@ if flow:
     col2.plotly_chart(fig)
 
     bar_fig = px.bar(sorted_districts, x='District Name', y='Crime Score', 
-                    title='District Crime Score Ranking',
+                    title="District Crime Score Ranking <br><sup style='color:#d4d4d4;'>Distric: " + district + "</sup>",
                     labels={'Crime Score': 'Crime Score'},
                     color='Crime Score',
                     color_continuous_scale='Turbo',
@@ -466,6 +466,8 @@ if flow:
     
     # Reset the index of the DataFrame so 'Districts' and 'Dates' become columns
     df_reset = data_reduced.reset_index()
+
+    df_reset['Date'] = datetime.strptime(df_reset['Date'], "%M/%D/%Y") 
     
     
     # Assuming df_reset now contains columns ['Districts', 'Dates', 'Crime Score']
@@ -473,7 +475,7 @@ if flow:
     
     # Optional: Improve layout
     fig.update_layout(
-        title='Crime Score Evolution in Similar Districts',
+        title="Crime Score Evolution in Similar Districts <br><sup style='color:#d4d4d4;'>Distric: " + district + "</sup>",
         xaxis_title='Date',
         yaxis_title='District',
         xaxis={'type': 'category'},  # Use this if you want discrete dates on the x-axis
