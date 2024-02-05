@@ -447,7 +447,6 @@ if flow:
         st.divider()
         st.write(links[0]['news'][2]["title"])
         st.link_button("Article", links[0]['news'][2]['link'])
-        st.divider()
 
 
 
