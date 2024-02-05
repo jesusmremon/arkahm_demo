@@ -16,6 +16,7 @@ import pickle
 import plotly.graph_objects as go
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
+import requests
 
 
 # Load the Shapefile and the districts data
@@ -197,6 +198,35 @@ def cluster_analysis(District, dataframe, numb_cl = 5):
     similar_districts = data_for_clustering[data_for_clustering['Cluster'] == cluster_of_input]['District Name'].tolist()
         
     return similar_districts, data_for_clustering
+
+def internet_search_json(query, serper_key, search = "search", country = "us"):
+    '''
+    This function returns the internet search of the query, using Serper
+    API and returns the response of the search results in JSON format.
+
+    * query (str): Is the Question to do research from the user
+    * serper_key (str): Is the API Key from serper to do ther search
+    * search (str): Is what kind of search to perfrom, it can be "search" or "news"
+    * country (str): Is the country to perform the search from
+
+    Courtesy of Mr. Jesus Remon
+    '''
+    url = "https://google.serper.dev/" + search
+
+    payload = json.dumps({
+      "q": query,
+      "gl": country
+    })
+
+    headers = {
+      'X-API-KEY': serper_key,
+      'Content-Type': 'application/json'
+    }
+
+    response = requests.request("POST", url, headers=headers, data=payload)
+    response_data = response.json()
+
+    return response_data
 
 
 
