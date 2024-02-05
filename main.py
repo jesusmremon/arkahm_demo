@@ -237,7 +237,7 @@ st.set_page_config("Arkham", layout="wide")
 
 flow = False
 
-district_list = district_data['District Name'].unique()
+district_list = district_data['District Name'].unique().to_list()
 
 with st.sidebar:
     st.subheader("Parameters for selection")
