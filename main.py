@@ -268,10 +268,12 @@ if flow:
 
     st.toast("Neural Network loading")
 
-    st.markdown(f"## <ins>{district}</ins>")
+    st.markdown(f"## {district}")
 
-    st.markdown(f"##### Rank: {district_rank}/23")
-    st.markdown(f"Crime Score: {round(crime_scale,2)}")
+    col1, col2, colend = st.column([1,1,10])
+
+    col1.markdown(f"##### Rank: {district_rank}/23")
+    col2.markdown(f"##### Crime Score: {round(crime_scale,2)}")
 
 
     addon = "th"
