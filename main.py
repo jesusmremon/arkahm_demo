@@ -454,7 +454,9 @@ if flow:
 
     #################
 
-    data_reduced['Date'] = pd.to_datetime(district_data['Date'])
+    data_reduced = district_data
+
+    data_reduced['Date'] = pd.to_datetime(data_reduced['Date'])
     data_reduced.set_index('Date', inplace=True)
 
     data_reduced = data_reduced[['Crime Score']].resample('W').mean()
