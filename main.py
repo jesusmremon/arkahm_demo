@@ -271,7 +271,7 @@ if flow:
     elif number == 1:
         addon = "nd"
     
-    st.page_link("https://home.chicagopolice.org/category/community-alerts/?tag=" + srt(number) + addon + "-district", label="Community Alerts", icon="📁")
+    st.page_link("https://home.chicagopolice.org/category/community-alerts/?tag=" + str(number) + addon + "-district", label="Community Alerts", icon="📁")
     st.page_link("https://home.chicagopolice.org/category/wanted/?tag="+ str(number) + addon +"-district", label="Community Fugitives", icon="📁")
     st.divider()
 
