@@ -263,6 +263,7 @@ if flow:
     st.toast("Neural Network loading")
 
     st.write(f"Crime Score: {round(crime_scale,1)}")
+    st.page_link("http://www.google.com", label="District Data", icon="📁")
     st.divider()
 
     data = district_data[district_data['District'] == number]
