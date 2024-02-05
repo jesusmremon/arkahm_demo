@@ -451,7 +451,7 @@ if flow:
     print(links)
 
     with st.expander("News Articles"):
-        st.markdown("##" + links[0]['news'][0]["title"])
+        st.write(links[0]['news'][0]["title"])
         st.text(links[0]['news'][0]['snippet'])
         st.link_button("Article", links[0]['news'][0]['link'])
         st.divider()
