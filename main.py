@@ -473,25 +473,11 @@ if flow:
     
     # Optional: Improve layout
     fig.update_layout(
-        title='Crime Score Heatmap by District and Date',
+        title='Crime Score Evolution in Similar Districts',
         xaxis_title='Date',
         yaxis_title='District',
         xaxis={'type': 'category'},  # Use this if you want discrete dates on the x-axis
     )
-    
-    fig.show()
-    
-    fig = go.Figure(data=go.Heatmap(
-        z=data_reduced["Crime Score"],
-        x=data_reduced.index,
-        y=data.index,
-        colorscale='Viridis'))
-
-    fig.update_layout(
-        title='Crime Score Evolution in Similar Districts',
-        xaxis_nticks=36)
-    
-    fig.show()
 
     col2.plotly_chart(fig)
 
