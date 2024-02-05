@@ -440,12 +440,15 @@ if flow:
 
     with st.expander("News Articles"):
         st.write(links[0]['news'][0]["title"])
+        st.text(links[0]['news'][0]['snippet'])
         st.link_button("Article", links[0]['news'][0]['link'])
         st.divider()
         st.write(links[0]['news'][1]["title"])
+        st.text(links[0]['news'][1]['snippet'])
         st.link_button("Article", links[0]['news'][1]['link'])
         st.divider()
         st.write(links[0]['news'][2]["title"])
+        st.text(links[0]['news'][2]['snippet'])
         st.link_button("Article", links[0]['news'][2]['link'])
 
 
