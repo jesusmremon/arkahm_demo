@@ -251,7 +251,13 @@ with st.sidebar:
         if submitted:
             flow = True
 
-st.subheader("District: " + district)
+# RANKING DISTRICTS
+district_mean_scores = district_data.groupby('District Name')['Crime Score'].mean().reset_index()
+sorted_districts = district_mean_scores.sort_values(by='Crime Score').reset_index(drop=True)
+district_rank = sorted_districts[sorted_districts['District Name'] == district].index[0] + 1
+average_crime_score = district_mean_scores['Crime Score'].mean()
+
+st.subheader("Arkham")
 
 if flow:
 
@@ -261,6 +267,10 @@ if flow:
     geometry = districts_shp[districts_shp['dist_num'] == str(number)]['geometry'].values[0]
 
     st.toast("Neural Network loading")
+
+    st.subheader("{district_rank}/23 | District: " + district)
+
+    st.write(f"Rank: #{district_rank}/23")
 
     st.write(f"Crime Score: {round(crime_scale,1)}")
 
@@ -430,7 +440,19 @@ if flow:
 
     col2.plotly_chart(fig)
 
+    bar_fig = px.bar(sorted_districts, x='District Name', y='Crime Score', 
+                    title='District Crime Score Ranking',
+                    labels={'Crime Score': 'Crime Score'},
+                    color='Crime Score',
+                    color_continuous_scale='Turbo',
+                    orientation='v')
 
+    bar_fig.add_hline(y=average_crime_score, line_dash="dot", line_color="red", annotation_text=f'Average: {average_crime_score:.2f}',
+                    annotation_position="bottom right")
+
+    st.plotly_chart(bar_fig)
+
+    #################
     
     fig = px.imshow(district_data["Crime Score"], color_continuous_scale='RdBu_r', origin='lower')
 
