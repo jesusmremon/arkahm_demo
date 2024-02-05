@@ -270,7 +270,7 @@ if flow:
 
     st.subheader(f"{district}")
 
-    st.markdown(f"### Rank: {district_rank}/23")
+    st.markdown(f"##### Rank: {district_rank}/23")
 
     st.write(f"Crime Score: {round(crime_scale,1)}")
 
