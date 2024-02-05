@@ -468,7 +468,7 @@ if flow:
     # Reset the index of the DataFrame so 'Districts' and 'Dates' become columns
     df_reset = data_reduced.reset_index()
 
-    df_reset['Date'] = datetime.strftime(df_reset['Date'], "%M/%D/%Y") 
+    df_reset['Date'] = df_reset['Date'].dt.strftime("%M/%D/%Y") 
     
     
     # Assuming df_reset now contains columns ['Districts', 'Dates', 'Crime Score']
