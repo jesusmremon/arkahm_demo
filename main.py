@@ -237,14 +237,13 @@ st.set_page_config("Arkham", layout="wide")
 
 flow = False
 
-district_list = district_data['District Name'].unique().to_list()
 
 with st.sidebar:
     st.subheader("Parameters for selection")
 
     # Dropdown menu for district selection
     with st.form("my_form"):
-        district = st.selectbox('District', district_list.remove("Norridge"))
+        district = st.selectbox('District', district_data['District Name'].unique())
         resample_win = st.selectbox('Window of Forecast', ["Monthly", "Weekly", "Daily"])
 
         delta_value = st.slider("Select forecast time", 1, 10)
