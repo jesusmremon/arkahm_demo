@@ -258,7 +258,6 @@ sorted_districts = district_mean_scores.sort_values(by='Crime Score').reset_inde
 district_rank = sorted_districts[sorted_districts['District Name'] == district].index[0] + 1
 average_crime_score = district_mean_scores['Crime Score'].mean()
 
-st.subheader("Arkham")
 
 if flow:
 
@@ -269,11 +268,11 @@ if flow:
 
     st.toast("Neural Network loading")
 
-    st.subheader(f"{district}")
+    st.markdown(f"## <ins>{district}</ins>")
 
     st.markdown(f"##### Rank: {district_rank}/23")
+    st.markdown(f"Crime Score: {round(crime_scale,2)}")
 
-    st.write(f"Crime Score: {round(crime_scale,1)}")
 
     addon = "th"
 
