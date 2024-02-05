@@ -18,6 +18,7 @@ from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 import requests
 
+serper_key = st.secrets['seper_key']
 
 # Load the Shapefile and the districts data
 districts_shp = gpd.read_file("data/geo_chicago.shp")
