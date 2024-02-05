@@ -17,6 +17,7 @@ import plotly.graph_objects as go
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 import requests
+import json
 
 
 # Load the Shapefile and the districts data
