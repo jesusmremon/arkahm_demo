@@ -8,3 +8,4 @@ folium
 streamlit_folium
 datetime
 requests
+plost
