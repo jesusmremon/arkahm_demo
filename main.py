@@ -74,13 +74,13 @@ def filter_district_data(district_data, number, date2, date3=None):
 
 ###################################################################################################
 
-def choose_district(district, window, data):
+def choose_district(district, window, data, value):
     data_reduced = data[data["District Name"] == district]
 
     data_reduced['Date'] = pd.to_datetime(data_reduced['Date'])
     data_reduced.set_index('Date', inplace=True)
 
-    data_reduced = data_reduced[["Crime Score"]].resample(window).mean()
+    data_reduced = data_reduced[[value]].resample(window).mean()
 
     return data_reduced
 
