@@ -237,12 +237,14 @@ st.set_page_config("Arkham", layout="wide")
 
 flow = False
 
+district_list = district_data['District Name'].unique()
+
 with st.sidebar:
     st.subheader("Parameters for selection")
 
     # Dropdown menu for district selection
     with st.form("my_form"):
-        district = st.selectbox('District', district_data['District Name'].unique())
+        district = st.selectbox('District', district_list.remove("Norridge")
         resample_win = st.selectbox('Window of Forecast', ["Monthly", "Weekly", "Daily"])
 
         delta_value = st.slider("Select forecast time", 1, 10)
@@ -466,10 +468,7 @@ if flow:
 
     
     # Reset the index of the DataFrame so 'Districts' and 'Dates' become columns
-    df_reset = data_reduced.reset_index()
-
-    df_reset['Date'] = df_reset['Date'].dt.strftime("%M/%D/%Y") 
-    
+    df_reset = data_reduced.reset_index()    
     
     # Assuming df_reset now contains columns ['Districts', 'Dates', 'Crime Score']
     fig = px.density_heatmap(df_reset, x='Date', y='District Name', z='Crime Score', color_continuous_scale='Viridis')
