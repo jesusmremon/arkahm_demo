@@ -459,7 +459,27 @@ if flow:
     data_reduced['Date'] = pd.to_datetime(data_reduced['Date'])
     data_reduced.set_index('Date', inplace=True)
 
-    data_reduced = data_reduced[['Crime Score']].resample('W').mean()
+    data_reduced = data_reduced[data_reduced['District Name'].isin(value_cluster)]
+
+    data_reduced = data_reduced.groupby('District Name')[['Crime Score']].resample('W').mean()
+
+    
+    # Reset the index of the DataFrame so 'Districts' and 'Dates' become columns
+    df_reset = data_reduced.reset_index()
+    
+    
+    # Assuming df_reset now contains columns ['Districts', 'Dates', 'Crime Score']
+    fig = px.density_heatmap(df_reset, x='Date', y='District Name', z='Crime Score', color_continuous_scale='Viridis')
+    
+    # Optional: Improve layout
+    fig.update_layout(
+        title='Crime Score Heatmap by District and Date',
+        xaxis_title='Date',
+        yaxis_title='District',
+        xaxis={'type': 'category'},  # Use this if you want discrete dates on the x-axis
+    )
+    
+    fig.show()
     
     fig = go.Figure(data=go.Heatmap(
         z=data_reduced["Crime Score"],
