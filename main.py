@@ -18,7 +18,6 @@ from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 import requests
 
-serper_key = st.secrets['seper_key']
 
 # Load the Shapefile and the districts data
 districts_shp = gpd.read_file("data/geo_chicago.shp")
@@ -433,7 +432,7 @@ if flow:
     links = []
     
     for i in range(2):
-      results = internet_search_json("Crime in Licoln district, Chicago", serper_key, "news", "us")
+      results = internet_search_json("Crime in Licoln district, Chicago", "9ade9c0d3878580c74d4990b313d1e269214bc5b", "news", "us")
       links.append(results)
     
     print(links)
