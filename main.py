@@ -270,10 +270,8 @@ if flow:
 
     st.markdown(f"## {district}")
 
-    col1, col2, colend = st.columns([2,2,8])
-
-    col1.markdown(f"##### Rank: {district_rank}/23")
-    col2.markdown(f"##### Crime Score: {round(crime_scale,2)}")
+    st.markdown(f"##### Rank: {district_rank}/23")
+    st.markdown(f"##### Crime Score: {round(crime_scale,2)}")
 
 
     addon = "th"
@@ -369,8 +367,12 @@ if flow:
     with st.spinner("Loading Metrics"):
         col1.metric("Arrest Rate: (%)", round(arrest_rate_overall,2))
         col2.metric('Arrested:', criminals)
+
+    with st.spinner("Loading Metrics"):
         col1.metric('24hr Change:', len(data_last24), delta=delta_24,delta_color="inverse")
         col2.metric('Last 7 days:', len(data_last7), delta=delta_7,delta_color="inverse")
+
+    with st.spinner("Loading Metrics"):
         col2.metric(f'Crime score next {day_value}:', round(prediction[0],2), delta=round(delta_crim,2),delta_color="inverse")
         col1.metric("Response Time (min)", round(district_time,2), delta=round(delta_time,2), delta_color="inverse")
 
@@ -399,10 +401,12 @@ if flow:
     col1, colmed, col2 = st.columns([4,1,4])
 
     # Show the pie chart
-    col1.plotly_chart(fig)
+    with st.spinner("Loading Chart"):
+        col1.plotly_chart(fig)
 
     # Graph with forecast of the crime score
-    col2.plotly_chart(plotting(df, forecast_df, district, 'Historical Crime Score', 'Forecasted Crime Score', 'Crime Score', "Crime Score"))
+    with st.spinner("Loading Chart"):
+        col2.plotly_chart(plotting(df, forecast_df, district, 'Historical Crime Score', 'Forecasted Crime Score', 'Crime Score', "Crime Score"))
 
 
     ### Mostrar los distritos con correlación similar en crimen
@@ -415,7 +419,8 @@ if flow:
 
     forecast_df_res, prediction_res = forecast(model_ARIMA_res, delta_value)
 
-    col1.plotly_chart(plotting(df_res, forecast_df_res, district, 'Historical Response Time', 'Forecasted Response Time', 'response_time_minutes', "Response Time"))
+    with st.spinner("Loading Chart"):
+        col1.plotly_chart(plotting(df_res, forecast_df_res, district, 'Historical Response Time', 'Forecasted Response Time', 'response_time_minutes', "Response Time"))
 
     
 
@@ -440,7 +445,9 @@ if flow:
                       legend_title='Districts',
                       template='plotly_white')
 
-    col2.plotly_chart(fig)
+    
+    with st.spinner("Loading Chart"):
+        col2.plotly_chart(fig)
 
     bar_fig = px.bar(sorted_districts, x='District Name', y='Crime Score', 
                     title="District Crime Score Ranking <br><sup style='color:#d4d4d4;'>Distric: " + district + "</sup>",
@@ -452,7 +459,8 @@ if flow:
     bar_fig.add_hline(y=average_crime_score, line_dash="dot", line_color="red", annotation_text=f'Average: {average_crime_score:.2f}',
                     annotation_position="bottom right")
 
-    col1.plotly_chart(bar_fig)
+    with st.spinner("Loading Chart"):
+        col1.plotly_chart(bar_fig)
 
     #################
 
@@ -481,7 +489,8 @@ if flow:
         xaxis={'type': 'category'},  # Use this if you want discrete dates on the x-axis
     )
 
-    col2.plotly_chart(fig)
+    with st.spinner("Loading Chart"):
+        col2.plotly_chart(fig)
 
     
 
