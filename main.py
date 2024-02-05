@@ -456,7 +456,7 @@ if flow:
     
     fig = go.Figure(data=go.Heatmap(
         z=district_data["Crime Score"],
-        x=district_data["Dates"],
+        x=district_data["Date"],
         y=data.index,
         colorscale='Viridis'))
 
@@ -466,7 +466,7 @@ if flow:
     
     fig.show()
 
-    st.plotly_chart(fig)
+    col2.plotly_chart(fig)
 
     
 
