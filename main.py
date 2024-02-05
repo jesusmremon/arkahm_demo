@@ -436,7 +436,7 @@ if flow:
     date='date',
     x_unit='week',
     y_unit='District Name',
-    color='Crime Score,
+    color='Crime Score',
     aggregate='median',
     height=345,
     use_container_width=True)
