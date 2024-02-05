@@ -433,7 +433,7 @@ if flow:
     links = []
     
     for i in range(2):
-      results = internet_search_json("Crime in Licoln district, Chicago", "9ade9c0d3878580c74d4990b313d1e269214bc5b", "news", "us")
+      results = internet_search_json(f"Crime in {district}, Chicago", "9ade9c0d3878580c74d4990b313d1e269214bc5b", "news", "us")
       links.append(results)
     
     print(links)
