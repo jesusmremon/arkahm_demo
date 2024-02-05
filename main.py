@@ -430,6 +430,12 @@ if flow:
 
     col2.plotly_chart(fig)
 
+
+    
+    fig = px.imshow(district_data["Crime Score"], color_continuous_scale='RdBu_r', origin='lower')
+
+    st.plotly_chart(fig)
+
     
 
     ### Grafica de previsión de crecimiento de carga policial
