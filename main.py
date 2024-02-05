@@ -268,9 +268,9 @@ if flow:
 
     st.toast("Neural Network loading")
 
-    st.subheader(f"{district_rank}/23 | {district}")
+    st.subheader(f"{district}")
 
-    st.write(f"Rank: #{district_rank}/23")
+    st.markdown(f"### Rank: {district_rank}/23")
 
     st.write(f"Crime Score: {round(crime_scale,1)}")
 
