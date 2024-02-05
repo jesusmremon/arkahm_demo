@@ -429,6 +429,22 @@ if flow:
 
     ### Posibilidad de crear un PDF
 
+    links = []
+    
+    for i in range(2):
+      results = internet_search_json("Crime in Licoln district, Chicago", serper_key, "news", "us")
+      links.append(results)
+    
+    print(links)
+
+    with st.expander("News Articles"):
+        st.subheader(links[0]['news'][0]["title"])
+        st.divider()
+        st.subheader(links[0]['news'][1]["title"])
+        st.divider()
+        st.subheader(links[0]['news'][2]["title"])
+        st.divider()
+
 
 
 
