@@ -454,7 +454,17 @@ if flow:
 
     #################
     
-    fig = px.imshow(district_data["Crime Score"], color_continuous_scale='RdBu_r', origin='lower')
+    fig = go.Figure(data=go.Heatmap(
+        z=district_data["Crime Score"],
+        x=district_data["Dates"],
+        y=data.index,
+        colorscale='Viridis'))
+
+    fig.update_layout(
+        title='Crime Score Evolution in Similar Districts',
+        xaxis_nticks=36)
+    
+    fig.show()
 
     st.plotly_chart(fig)
 
