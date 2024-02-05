@@ -244,7 +244,7 @@ with st.sidebar:
 
     # Dropdown menu for district selection
     with st.form("my_form"):
-        district = st.selectbox('District', district_list.remove("Norridge")
+        district = st.selectbox('District', district_list.remove("Norridge"))
         resample_win = st.selectbox('Window of Forecast', ["Monthly", "Weekly", "Daily"])
 
         delta_value = st.slider("Select forecast time", 1, 10)
