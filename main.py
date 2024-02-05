@@ -80,7 +80,7 @@ def choose_district(district, window, data, column_val):
     data_reduced['Date'] = pd.to_datetime(data_reduced['Date'])
     data_reduced.set_index('Date', inplace=True)
 
-    data_reduced = data_reduced[[column_val]].resample(window).mean()
+    data_reduced = data_reduced.loc[:, ["Crime Score"]].resample(window).mean()
 
     return data_reduced
 
@@ -461,7 +461,10 @@ if flow:
 
     data_reduced = data_reduced[data_reduced['District Name'].isin(value_cluster)]
 
-    data_reduced = data_reduced.groupby('District Name')[['Crime Score']].resample('W').mean()
+    data_reduced = data_reduced.groupby('District Name').loc[:, ["Crime Score"]].resample(window).mean()
+
+
+    # data_reduced = data_reduced.groupby('District Name')[['Crime Score']].resample('W').mean()
 
     
     # Reset the index of the DataFrame so 'Districts' and 'Dates' become columns
