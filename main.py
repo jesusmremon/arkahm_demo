@@ -18,6 +18,7 @@ from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 import requests
 import json
+import plost
 
 
 # Load the Shapefile and the districts data
@@ -429,6 +430,16 @@ if flow:
                       template='plotly_white')
 
     col2.plotly_chart(fig)
+
+    plost.time_hist(
+    data=district_data,
+    date='date',
+    x_unit='week',
+    y_unit='District Name',
+    color='Crime Score,
+    aggregate='median',
+    height=345,
+    use_container_width=True)
 
     ### Grafica de previsión de crecimiento de carga policial
     # - Calcular una métrica para determinar la carga policial de 0 a 10
