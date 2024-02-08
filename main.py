@@ -88,7 +88,7 @@ def choose_district(district, window, data, value):
 def ARIMA_pred(dataframe, delta, value):
     df = dataframe
 
-    model = ARIMA(df[value], order=(2, 2, 2))
+    model = ARIMA(df[value], order=(3, 2, 2))
     model_fit = model.fit()
     
     forecast = model_fit.get_forecast(steps=delta)
