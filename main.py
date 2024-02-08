@@ -88,7 +88,7 @@ def choose_district(district, window, data, value):
 def ARIMA_pred(dataframe, delta, value):
     df = dataframe
 
-    model = ARIMA(df[value], order=(2, 1, 1))
+    model = ARIMA(df[value], order=(2, 2, 2))
     model_fit = model.fit()
     
     forecast = model_fit.get_forecast(steps=delta)
@@ -104,7 +104,7 @@ def ARIMA_pred2(dataframe, delta):
     print(df.head())
 
     # Fitting an ARIMA model to the differenced data
-    model = ARIMA(df["response_time_minutes"], order=(3, 1, 1))
+    model = ARIMA(df["response_time_minutes"], order=(4, 2, 1))
     model_fit = model.fit()
     
     forecast = model_fit.get_forecast(steps=delta)
